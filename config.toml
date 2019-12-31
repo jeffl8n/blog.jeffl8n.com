@@ -1,0 +1,6 @@
+baseURL = "https://blog.jeffl8n.com/"
+languageCode = "en-us"
+title = "blog.jeffl8n.com"
+CanonifyUrls = true
+
+disableKinds = ["taxonomy", "taxonomyTerm"]

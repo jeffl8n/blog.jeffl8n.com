@@ -1,0 +1,32 @@
+{{ partial "header.html" . }}
+
+<div class="container home">
+  <div class="projects">
+    <h1>Current Projects</h1>
+    {{ range sort $.Site.Data.project "date" "desc" }}
+    {{ if .current }}
+    <article class="project">
+      <a href="{{ .link }}" target="_blank" title="{{ .title }}"><img src="{{ .logo }}" alt="{{ .title }} logo"/></a>
+        <h3>
+            <a href="{{ .link }}" target="_blank" title="{{ .title }}">{{ .title }}</a>
+            <small>{{ .subtitle }}</small>
+        </h3>
+        <p>{{ .description }}</p>
+    </article>
+    {{end}}
+    {{end}}
+  </div>
+
+  <div class="blog">
+    <h1>Blog</h1>
+    {{ range .Data.Pages.ByDate.Reverse }}
+    <article>
+        <h3><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h3>
+        <div class="time">{{ .Date.Format "Monday, January 2, 2006" }}</div>
+        <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "footer.html" . }}

@@ -1,10 +1,12 @@
 {{ partial "header.html" . }}
 
 <div class="container home">
+
   <div class="projects">
+    {{ range where $.Site.Data.project "current" true }}
     <h1>Current Projects</h1>
-    {{ range sort $.Site.Data.project "date" "desc" }}
-    {{ if .current }}
+    {{ end }}
+    {{ range sort (where $.Site.Data.project "current" true) $.Site.Data.project "date" "desc" }}
     <article class="project">
       <a href="{{ .link }}" target="_blank" title="{{ .title }}"><img src="{{ .logo }}" alt="{{ .title }} logo"/></a>
         <h3>
@@ -13,7 +15,6 @@
         </h3>
         <p>{{ .description }}</p>
     </article>
-    {{end}}
     {{end}}
   </div>
 
